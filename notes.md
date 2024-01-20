@@ -1,0 +1,2 @@
+* **Display Images:** https://stackoverflow.com/questions/15772394/how-to-upload-display-and-save-images-using-node-js-and-express
+* **mongoose local:** https://stackoverflow.com/questions/70152365/how-to-connect-mongoose-to-mongodb-locally

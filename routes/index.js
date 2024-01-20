@@ -15,4 +15,4 @@ router.get('/', async (req, res) => {
 
 
 // Exports
-module.exports = router
+module.exports = router;

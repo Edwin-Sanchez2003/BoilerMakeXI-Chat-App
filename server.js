@@ -3,8 +3,8 @@ const env = require('dotenv');
 env.config();
 const express = require('express');
 const expressLayouts = require('express-ejs-layouts');
-//const methodOverride = require('method-override');
-//const bodyParser = require('body-parser');
+const methodOverride = require('method-override');
+const bodyParser = require('body-parser');
 
 
 // construct an express js app
@@ -20,6 +20,8 @@ app.set('models', __dirname + '/models');
 app.set('views', __dirname + '/views'); // set the views directory path (for routes)
 app.set('layout', 'layouts/layout'); // set layouts directory
 app.use(expressLayouts);
+app.use(methodOverride('_method'));
+app.use(bodyParser.urlencoded({ limit: '10mb', extended: false })); // parser middleware
 app.use(express.static('public')); // create a static files folder
 
 

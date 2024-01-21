@@ -10,7 +10,6 @@ const expressLayouts = require('express-ejs-layouts');
 // construct an express js app
 const app = express();
 
-
 // Routers
 const indexRouter = require('./routes/index');
 const itemRouter = require('./routes/item');
@@ -24,16 +23,17 @@ app.use(expressLayouts);
 app.use(express.static('public')); // create a static files folder
 
 
+// Databaset - MongoDB
+const mongoose = require('mongoose');
+mongoose.connect(process.env.MONGO_URI);
+const db = mongoose.connection;
+db.on('error', error => console.error(error));
+db.once('open', () => console.log('Connected to mongoose!'));
+
+
 // Routes
 app.use('/', indexRouter); // homepage router
-app.use('/items', itemRouter);
-/*
-app.use('/events', eventsRouter)
-app.use('/members', membersRouter)
-app.use('/projects', projectsRouter)
-app.use('/resources', resourcesRouter)
-app.use('/admin', adminRouter)
-*/
+app.use('/items', itemRouter); // items CRUD
 
 // If page does not exist:
 app.get('*', (req, res) => {

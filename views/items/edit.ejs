@@ -1,0 +1,16 @@
+<h1>Add An Item to Sell:</h1>
+<p>Fill out this form to put an item up for sale!</p>
+
+<form action="/items/<%= item ? item.id : null %>?_method=PUT" method="post">
+    <label>Item Info </label>
+    <legend>Name: </legend>
+    <input type="text" name="name" value="<%= item ? item.name : null %>">
+    <legend>Description: </legend>
+    <input type="text" name="description" value="<%= item ? item.description : null %>">
+    <legend>Price: </legend>
+    <input type="text" name="price" value="<%= item ? item.price : null %>">
+    <br>
+
+    <button type="submit">Submit</button>
+</form>
+<a href="/">Cancel</a>

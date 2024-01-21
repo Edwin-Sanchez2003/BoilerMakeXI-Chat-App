@@ -1,31 +1,20 @@
 // Imports
-import { Entity, Schema } from 'redis-om';
-import client from '../client.js';
+const mongoose = require('mongoose');
 
-// Item class - extends the default class of Entity
-class Item extends Entity {}
-
-/* create a Schema for Person */
-const itemSchema = new Schema(Item, {
-    name: { // the name of the item being sold
+const itemSchema = new mongoose.Schema({
+    name: {
         type: String,
-        required: true,
-        unique: false
+        required: true
     },
-    description: { // a text description of the item
+    description: {
         type: String,
-        required: true,
-        unique: false
+        required: true
     },
-    price: { // a price for the item, in USD
+    price: {
         type: Number,
-        required: true,
-        unique: false
+        required: true
     }
-}); // end itemSchema
+});
 
-/* use the client to create a Repository just for Persons */
-export const itemRepository = client.fetchRepository(itemSchema);
-
-/* create the index for Person */
-await itemRepository.createIndex();
+// Exports
+module.exports = mongoose.model('Item', itemSchema);

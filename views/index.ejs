@@ -1,1 +1,10 @@
 <h1>Home Page</h1>
+
+<h2>Items:</h2>
+<% for (let i = 0; i < items.length; i++) { %>
+    <br>
+    <li>Name: <%= items[i].name %></li>
+    <li>Description: <%= items[i].description %></li>
+    <li>Price: <%= items[i].price %></li>
+    <br>
+<% } %>

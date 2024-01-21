@@ -7,10 +7,17 @@
 const express = require('express');
 const router = express.Router();
 
+// Models
+const Item = require('../models/commerce/item.js');
 
 // Main Page Route
-router.get('/', async (req, res) => {   
-    res.render('index');
+router.get('/', async (req, res) => {
+    try {
+        const items = await Item.find({}).exec();
+        res.render('index', { items });
+    } catch {
+        res.redirect('/items/');
+    } // end try-catch
 }); // end get req/resp for main page route
 
 

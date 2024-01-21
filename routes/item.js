@@ -33,7 +33,7 @@ router.post('/', async (req, res) => {
         res.redirect(`/items/${item.id}`);
     }
     catch { // add err msg for when item is not passed?
-        res.redirect('/');
+        res.redirect('/items/');
     } // end try-catch
 }); // end POST request
 

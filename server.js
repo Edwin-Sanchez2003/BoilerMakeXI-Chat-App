@@ -24,12 +24,13 @@ app.use(express.static('public')); // create a static files folder
 
 
 // Databaset - MongoDB
+/*
 const mongoose = require('mongoose');
 mongoose.connect(process.env.MONGO_URI);
 const db = mongoose.connection;
 db.on('error', error => console.error(error));
 db.once('open', () => console.log('Connected to mongoose!'));
-
+*/
 
 // Routes
 app.use('/', indexRouter); // homepage router
